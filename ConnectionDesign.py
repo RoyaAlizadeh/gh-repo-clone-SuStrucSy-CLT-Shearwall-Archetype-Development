@@ -572,7 +572,7 @@ def Connection_design(models_dict, file_path):
         design_models =  dict()
         Count_design_models = dict()
 
-        CLT_properties, Pr, Mr, Vr, Qr, PEV = CLT_resistance_calculator(model_data, file_path='CLT Properties.xlsx')
+        CLT_properties, Pr, Mr, Vr, Qr, PEV = CLT_resistance_calculator(model_data, file_path='gh-repo-clone-SuStrucSy-CLT-Shearwall-Archetype-Development/CLT Properties.xlsx')
         capacity_check_I_status, capacity_check_I_ratio = Panel_capacity_check_I(Pr, Mr, PEV, Pf[1], t)
         archetypes.at[model_name-1,'Gravity'] = capacity_check_I_status
         if capacity_check_I_status  == 1 :
@@ -694,5 +694,6 @@ def Connection_design(models_dict, file_path):
                 All_DesignModels.update({model_name:DesignModel_data})
     archetypes.to_excel('archetypes.xlsx')
     return All_DesignModels   
+
 
 
