@@ -660,6 +660,13 @@ def Connection_design(models_dict, file_path):
                                         Rwr2 = rf*KRPrime*bs/(kf*H) + q*m_panel*bs/(2*H)
                                         Rwr = min(Rwr1,Rwr2)
 
+                                        Teta = 1/(k_prime*Beta**2)(Rwr1*H/bs**2 - m_panels*q*(Beta-0.5))
+                                        Fh = kh * Teta*bs * Beta
+                                        Ff = nf*kf*Teta*bs*Beta
+                                        Fq = q*bs
+
+                                        Rc = max(Fh+Fq-Ff, Ff+Fq)
+
                                         #Wall Mechanical Properties Matrix
                                         Wall_mech = {'Rwr': Rwr, 'Kw':Kw , 'KS':KS , 'KR':KR, 'KB':KB, 'KA':KA , 'Omega': Omega_st}
 
@@ -668,7 +675,7 @@ def Connection_design(models_dict, file_path):
                                                        'WFS' : connections_full_data['WFS'].iloc[j]['Zone_label'] }
                                         
                                         #Panel capacity check II
-                                        capacity_check_II_status=Panel_capacity_check_II(Omega_st, Pf[st], Pg[st]/m_panel, Vf/m_panel, Mf/m_panel, Pr, Vr, Mr, Qr)
+                                        capacity_check_II_status=Panel_capacity_check_II(Omega_st, Pf[st], Pg[st]/m_panel, Vf/m_panel, Mf/m_panel, Pr, Vr, Mr, Qr,Rc)
                                         if capacity_check_II_status == 1:
                                             new_config = pd.DataFrame([{'k': [k], 'i': [i], 'j': [j], 'nf': [nf], 'ns': [ns] ,
                                                                         'Omega': Omega_st , 'Wall_mech' : Wall_mech, 'Zone_labels':Zone_labels}])
@@ -694,6 +701,7 @@ def Connection_design(models_dict, file_path):
                 All_DesignModels.update({model_name:DesignModel_data})
     archetypes.to_excel('archetypes.xlsx')
     return All_DesignModels   
+
 
 
 
