@@ -270,7 +270,7 @@ def Seismic_forces_NBCC (wi,hi,num_storeys,duct,IE,T,Sa,m_panel,bs,q):
     SR = S[0.2]/S[5.0]
 
     #Load Table 4.1.8.11 values for Wall system
-    file_path = 'Wall system Mv.xlsx'
+    file_path = 'gh-repo-clone-SuStrucSy-CLT-Shearwall-Archetype-Development/Wall system Mv.xlsx'
 
     Mv, J = interpolate_mv_j(file_path, Ta, SR)
 
@@ -400,4 +400,5 @@ def Seismic_design (file_path_arch = 'Archtypes_Tier2.xlsx', file_path_hazard = 
 
         }
     return models
+
 
