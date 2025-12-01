@@ -238,11 +238,13 @@ def Panel_capacity_check_II(Omega, Pf, Pg, Vf, Mf, Pr, Vr, Mr, Qr,Rc):
      # --- Bending Moment Check ---
     Bending_check = int(Mf <= Mr)
     # if not Bearing_check:
-    #     print("Panel Capacity Check II: Bearing check failed")   
+    #     print("Panel Capacity Check II: Bearing check failed") 
+
+    return int(all([Axial_check,Shear_check]))
 
     # Return 1 only if all checks pass
-    return int(all([Axial_check, Shear_check,Bearing_check, Bending_check]))
-    # return int(all([Axial_check]))
+    # return int(all([Axial_check, Shear_check,Bearing_check, Bending_check]))
+    
 
 def rf_percentile(rf_mean, cov, percentile):
     """
@@ -702,6 +704,7 @@ def Connection_design(models_dict, file_path):
                 All_DesignModels.update({model_name:DesignModel_data})
     archetypes.to_excel('archetypes.xlsx')
     return All_DesignModels   
+
 
 
 
