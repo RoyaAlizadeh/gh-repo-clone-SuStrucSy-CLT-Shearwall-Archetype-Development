@@ -522,7 +522,7 @@ def Connection_design(models_dict, file_path):
        
     COV = 0.2
     SR_Margin = 0.5
-    file_path_arch = 'Archtypes_Tier2.xlsx'
+    file_path_arch = 'gh-repo-clone-SuStrucSy-CLT-Shearwall-Archetype-Development/Archtypes_Tier2.xlsx'
     #Load archetypes
     archetypes = pd.read_excel(file_path_arch)
 
@@ -660,7 +660,7 @@ def Connection_design(models_dict, file_path):
                                         Rwr2 = rf*KRPrime*bs/(kf*H) + q*m_panel*bs/(2*H)
                                         Rwr = min(Rwr1,Rwr2)
 
-                                        Teta = 1/(k_prime*Beta**2)(Rwr1*H/bs**2 - m_panels*q*(Beta-0.5))
+                                        Teta = 1/(KRPrime*Beta**2)(Rwr1*H/bs**2 - m_panels*q*(Beta-0.5))
                                         Fh = kh * Teta*bs * Beta
                                         Ff = nf*kf*Teta*bs*Beta
                                         Fq = q*bs
@@ -701,6 +701,7 @@ def Connection_design(models_dict, file_path):
                 All_DesignModels.update({model_name:DesignModel_data})
     archetypes.to_excel('archetypes.xlsx')
     return All_DesignModels   
+
 
 
 
