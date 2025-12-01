@@ -661,7 +661,7 @@ def Connection_design(models_dict, file_path):
                                         Rwr = min(Rwr1,Rwr2)
                                         
                                         Beta = 0.9
-                                        Teta = 1/(KRPrime*Beta**2)(Rwr1*H/bs**2 - m_panel*q*(Beta-0.5))
+                                        Teta = 1/(KRPrime*Beta**2)*(Rwr1*H/bs**2 - m_panel*q*(Beta-0.5))
                                         Fh = kh * Teta*bs * Beta
                                         Ff = nf*kf*Teta*bs*Beta
                                         Fq = q*bs
@@ -702,6 +702,7 @@ def Connection_design(models_dict, file_path):
                 All_DesignModels.update({model_name:DesignModel_data})
     archetypes.to_excel('archetypes.xlsx')
     return All_DesignModels   
+
 
 
 
