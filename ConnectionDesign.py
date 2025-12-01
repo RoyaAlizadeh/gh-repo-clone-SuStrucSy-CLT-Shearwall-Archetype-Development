@@ -9,7 +9,7 @@ from collections import defaultdict
 import time
 from functools import lru_cache
 import json
-def CLT_resistance_calculator(model_data, file_path='CLT Properties.xlsx'):
+def CLT_resistance_calculator(model_data, file_path='gh-repo-clone-SuStrucSy-CLT-Shearwall-Archetype-Development/CLT Properties.xlsx'):
     """
     Calculate the factored resistances of CLT wall panels using CSA-O86:24 guidelines
     and manufacturer-specific data (e.g., Nordic).
@@ -694,4 +694,5 @@ def Connection_design(models_dict, file_path):
                 All_DesignModels.update({model_name:DesignModel_data})
     archetypes.to_excel('archetypes.xlsx')
     return All_DesignModels   
+
 
